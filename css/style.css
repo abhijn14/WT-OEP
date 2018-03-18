@@ -1,0 +1,66 @@
+html, body {
+	font-family: 'Quicksand', serif;
+	height: 100%;
+}
+
+.topText {
+	background: black;
+	color: white;
+	height: 2em;
+	text-align: center;
+	font-size: 0.8em;
+	padding-top: 0.3em;
+}
+
+/* Navbar */
+.navbar {
+	height: 5%;
+	border-bottom: 2px solid #343a40;
+}
+
+.foodies {
+	font-weight: 700;
+}
+
+.container .foodies {
+	font-size: 5em;
+	/* color: white; */
+	text-align: center;
+}
+
+.navbar-text {
+	text-transform: uppercase;
+}
+
+/* Landing page */
+.homepage_image {
+	height: 95%;
+	width: 100%;
+	opacity: 0.7;
+}
+
+.landing {
+	margin-top: 18%;
+	color: white;
+}
+
+.foodies {
+	text-shadow: 2px 2px 2px grey;
+}
+
+.landing-text {
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 2em;
+}
+
+#landing_body {
+	background: url('../img/bg-1.png');
+	background-size: cover;
+	background-position: center;
+}
+
+/* Index page */
+.carousel img{
+	height: 41.7em;
+}
