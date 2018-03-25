@@ -48,7 +48,7 @@
 				$_SESSION['username'] = $username;
 				//echo "test 2";
 				// Redirect user to index.php
-				header("Location: hello.php");
+				header("Location: explore.html");
 				//echo "test 3";
 			}else{
 				echo "<div class='form'>
