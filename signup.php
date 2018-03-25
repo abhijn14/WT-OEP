@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,20 +12,48 @@
 	<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet"> 
 
 	<!-- Font Awesome -->
-	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-
-	<style>
-		.loginForm {
-			margin-top: 10%;
-			width: 30%;
-			border: 1px solid black;
-			padding: 1em;
-			text-align: center;
-		}
-	</style>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    
+    <style>
+        .signupForm {
+            margin-top: 5%;
+        }
+    </style>
 </head>
-
 <body>
+
+	<?php
+		//https://www.allphptricks.com/simple-user-registration-login-script-in-php-and-mysqli/
+		//registration.php
+
+
+		require('db.php');
+		// If form submitted, insert values into the database.
+		if(isset($_REQUEST['username'])){
+			$firstName = stripslashes($_REQUEST['firstName']);
+			$lastName = stripslashes($_REQUEST['lastName']);
+			$firstName = mysqli_real_escape_string($con,$firstName);
+			$lastName = mysqli_real_escape_string($con,$lastName);
+
+			//remove backspaces
+			$username = stripslashes($_REQUEST['username']);
+			//escapes special characters in a string
+			$username = mysqli_real_escape_string($con,$username);
+			$email = stripslashes($_REQUEST['email']);
+			$email = mysqli_real_escape_string($con,$email);
+			$password = stripslashes($_REQUEST['password']);
+			$password = mysqli_real_escape_string($con,$password);
+			$query = "INSERT into `users` (first_name, last_name, email, username, password)
+				VALUES ('$firstName', '$lastName', '$email', '$username', '".md5($password)."')";
+			$result = mysqli_query($con,$query);
+			if($result){
+				echo "<div class='form'>
+					<h3>You are registered successfully.</h3>
+					<br/>Click here to <a href='login.php'>Login</a></div>";
+			}
+		} else {
+	?>
+	
 	
 	<div class="topText">Every food item from menu will be delivered in betweeen 9 AM to 4 AM. It takes around 45 minutes to deliver.</div>
 
@@ -61,29 +90,36 @@
 				</li>
 			</ul>
 	  </div>
-	</nav>
-
-	<!-- Form -->
-	<div class="container loginForm">
-		<form action="login.php">
+    </nav>
+    
+    <!-- Form -->
+	<div class="container signupForm">
+		<form action="" name="registration" method="post">
 			<div class="form-group">
-				<label for="exampleInputEmail1">Username</label>
-				<input type="text" class="form-control" name="u_name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
-				<small id="emailHelp" class="form-text text-muted">User privacy is our first concern</small>
+				<label for="exampleInputEmail1">First Name</label>
+                <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <label for="exampleInputEmail2">Last Name</label>
+				<input type="text" name="lastName"class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email">
 			</div>
 			<div class="form-group">
+				<label for="exampleInputUsername">E-mail</label>
+				<input type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="Email">
+				<label for="exampleInputUsername">Username</label>
+				<input type="password" name="username" class="form-control" id="exampleInputPassword1" placeholder="Username">
 				<label for="exampleInputPassword1">Password</label>
-				<input type="password" class="form-control" name="pwd" id="exampleInputPassword1" placeholder="Password">
+				<input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 			</div>
-			<p>For new user registeration, <a href="signup.html">Click Here</a></p>
-			<button type="submit" class="btn btn-dark">Submit</button>
+			<button type="submit" name="submit" class="btn btn-dark">Submit</button>
 		</form>
 	</div>
+
+	
 
 	<!-- Javascript files go here -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script src="js/main.js"></script>
+	<?php } ?>
 </body>
 </html>
