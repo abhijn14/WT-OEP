@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" href="img/logo.png" type="image/png" sizes="16x16">
 	<title>FOODIES | Good food is good mood</title>
 
 	<!-- CSS Files go here -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 	<!-- Fonts & Icons -->
@@ -20,6 +21,8 @@
 			border: 1px solid black;
 			padding: 1em;
 			text-align: center;
+			background: #f8f9fa;
+			box-shadow: 3px 3px 3px gray;
 		}
 	</style>
 </head>
@@ -68,7 +71,12 @@
 		<form action="login.php">
 			<div class="form-group">
 				<label for="exampleInputEmail1">Username</label>
-				<input type="text" class="form-control" name="u_name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+				<div class="input-group mb-2 mr-sm-2">
+					<div class="input-group-prepend">
+						<div class="input-group-text">@</div>
+					</div>
+					<input type="text" class="form-control" name="u_name" id="inlineFormInputGroupUsername2" placeholder="Username">
+				</div>
 				<small id="emailHelp" class="form-text text-muted">User privacy is our first concern</small>
 			</div>
 			<div class="form-group">
